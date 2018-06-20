@@ -1,30 +1,35 @@
 <template>
     <div class="add-item">
-        <form action="#" method="post" v-on:submit.prevent="submitForm">
-            <input type="text" v-model="itemText" placeholder="Add something to the backlog">
-        </form>
+        <b-form action="#" method="post" @submit.prevent="submitForm">
+            <b-form-input active type="text" v-model="itemTitle" placeholder="Title of Item" />
+            <b-form-textarea :rows="3" :max-rows="6" type="text" v-model="itemDescription" placeholder="Description of Item" />
+            <b-button type="submit" variant="primary">Submit</b-button>
+        </b-form>
     </div>
 </template>
 
 <script>
 export default {
   name: 'NewItemForm',
-  data () {
+  data() {
     return {
-      itemText: ''
-    }
+      itemTitle: '',
+      itemDescription: '',
+    };
   },
   methods: {
-    submitForm () {
-      if (this.itemText) {
+    submitForm() {
+      if (this.itemTitle) {
         this.$store.commit('addItem', {
-          text: this.itemText
-        })
-        this.itemText = ''
+          title: this.itemTitle,
+          description: this.itemDescription,
+        });
+        this.itemTitle = '';
+        this.itemDescription = '';
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

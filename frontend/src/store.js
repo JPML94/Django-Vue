@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /* eslint-disable no-param-reassign */
 export default new Vuex.Store({
@@ -9,17 +9,19 @@ export default new Vuex.Store({
     items: {
       todo: [],
       inProgress: [],
-      done: []
+      done: [],
     },
-    nextId: 1
+    nextId: 1,
+    strict: process.env.NODE_ENV !== 'production',
   },
   mutations: {
-    addItem (state, item) {
-      state.items.todo.push(Object.assign(item, { id: state.nextId }))
-      state.nextId += 1
+    addItem(state, item) {
+      state.items.todo.push(Object.assign(item, { id: state.nextId }));
+      state.nextId += 1;
+      console.log(item);
     },
-    updateItems (state, { items, id }) {
-      state.items[id] = items
-    }
-  }
-})
+    updateItems(state, { items, id }) {
+      state.items[id] = items;
+    },
+  },
+});

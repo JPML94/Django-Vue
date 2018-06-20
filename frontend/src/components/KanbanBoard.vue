@@ -15,17 +15,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import TaskLane from './TaskLane'
+import { mapState } from 'vuex';
+import TaskLane from './TaskLane';
+
 export default {
   name: 'KanbanBoard',
   components: {
-    'task-lane': TaskLane
+    'task-lane': TaskLane,
   },
   computed: mapState({
     todoItems: s => s.items.todo,
     inProgressItems: s => s.items.inProgress,
-    doneItems: s => s.items.done
-  })
-}
+    doneItems: s => s.items.done,
+  }),
+};
 </script>

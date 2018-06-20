@@ -3,7 +3,8 @@
     <div class="card-block">
         <h5 class="card-title">
             <span class="text-muted">#{{item.id}}</span>
-            {{item.text}}
+            {{item.title}}:<br><br>
+            {{item.description}}
         </h5>
     </div>
   </div>
@@ -12,8 +13,8 @@
 <script>
 export default {
   name: 'TaskLaneItem',
-  props: ['item']
-}
+  props: ['item'],
+};
 </script>
 
 <style>

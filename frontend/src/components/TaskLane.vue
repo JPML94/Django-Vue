@@ -15,34 +15,35 @@
 </template>
 
 <script>
-import Draggable from 'vuedraggable'
-import TaskLaneItem from './TaskLaneItem'
+import Draggable from 'vuedraggable';
+import TaskLaneItem from './TaskLaneItem';
+
 export default {
   name: 'TaskLane',
-  props: ['items', 'title', 'id'],
+  props: ['items', 'title', 'id', 'description'],
   components: {
     item: TaskLaneItem,
-    draggable: Draggable
+    draggable: Draggable,
   },
   computed: {
-    itemCount () {
-      if (!this.items) return ''
-      if (this.items.length === 1) return '1 task'
-      return `${this.items.length} tasks`
+    itemCount() {
+      if (!this.items) return '';
+      if (this.items.length === 1) return '1 task';
+      return `${this.items.length} tasks`;
     },
     draggables: {
-      get () {
-        return this.items
+      get() {
+        return this.items;
       },
-      set (items) {
+      set(items) {
         this.$store.commit('updateItems', {
           items,
-          id: this.id
-        })
-      }
-    }
-  }
-}
+          id: this.id,
+        });
+      },
+    },
+  },
+};
 </script>
 
 <style>

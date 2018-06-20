@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="main">
     <button
       class="btn btn-primary btn-margin"
       v-if="!authenticated"
       @click="login()">
       Log In
     </button>
-    <button
+    <!-- <button
       class="btn btn-primary btn-margin"
       v-if="authenticated"
       @click="privateMessage()">
       Call Private
-    </button>
+    </button> -->
     <button
       class="btn btn-primary btn-margin"
       v-if="authenticated"
@@ -23,47 +23,55 @@
 </template>
 
 <script>
-import AuthService from './auth/AuthService'
-import axios from 'axios'
-import Home from '@/views/Home.vue'
+import Home from '@/views/Home';
+import axios from 'axios';
+import AuthService from './auth/AuthService';
 
-const API_URL = 'http://localhost:8000'
+const API_URL = 'http://localhost:8000';
 
-const auth = new AuthService()
+const auth = new AuthService();
 
 export default {
   name: 'app',
   components: { Home },
-  data () {
-    this.handleAuthentication()
-    this.authenticated = false
-
+  data() {
+    this.handleAuthentication();
+    this.authenticated = false;
+    // eslint-disable-next-line
     auth.authNotifier.on('authChange', authState => {
-      this.authenticated = authState.authenticated
-    })
+      this.authenticated = authState.authenticated;
+    });
 
     return {
-      authenticated: false
-    }
+      authenticated: false,
+    };
   },
   methods: {
     // this method calls the AuthService login() method
-    login () {
-      auth.login()
+    login() {
+      auth.login();
     },
-    handleAuthentication () {
-      auth.handleAuthentication()
+    handleAuthentication() {
+      auth.handleAuthentication();
     },
-    logout () {
-      auth.logout()
+    logout() {
+      auth.logout();
     },
-    privateMessage () {
-      const url = `${API_URL}/api/private/`
-      return axios.get(url, {headers: {Authorization: `Bearer ${AuthService.getAuthToken()}`}}).then((response) => {
-        console.log(response.data)
-        this.message = response.data || ''
-      })
-    }
-  }
-}
+    privateMessage() {
+      const url = `${API_URL}/api/private/`;
+      // eslint-disable-next-line
+      return axios.get(url, { headers: {Authorization: `Bearer ${AuthService.getAuthToken()}` } }).then((response) => {
+      // eslint-disable-next-line
+        console.log(response.data);
+        this.message = response.data || '';
+      });
+    },
+  },
+};
 </script>
+
+<style>
+.main {
+  padding-top: 20px;
+}
+</style>
