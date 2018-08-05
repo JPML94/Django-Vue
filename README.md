@@ -62,3 +62,22 @@ $ npm run dev
 ```
 
 ##### Open a browser and go to [localhost:8080](localhost:8080)
+
+### Backend commands:
+
+##### When you modify models
+
+- Commit the changes to a python migrations file in name-of-app/name-of-service/migrations
+```
+$ python manage.py makemigrations
+```
+- Push them to the DB:
+```
+$ python manage.py migrate
+```
+
+#### REPL
+
+```
+$ python manage.py shell
+```

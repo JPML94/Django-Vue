@@ -19,6 +19,6 @@ export default {
 
 <style>
 .card.task-lane-item {
-  background: #627180;
+  background: #e76661;
 }
 </style>

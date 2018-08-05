@@ -1,19 +1,14 @@
 <template>
   <div class="main">
+    <h1>Angler</h1>
     <button
-      class="btn btn-primary btn-margin"
+      class="btn btn-primary btn-margin right"
       v-if="!authenticated"
       @click="login()">
       Log In
     </button>
-    <!-- <button
-      class="btn btn-primary btn-margin"
-      v-if="authenticated"
-      @click="privateMessage()">
-      Call Private
-    </button> -->
     <button
-      class="btn btn-primary btn-margin"
+      class="btn btn-primary btn-margin right"
       v-if="authenticated"
       @click="logout()">
       Log Out
@@ -73,5 +68,14 @@ export default {
 <style>
 .main {
   padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.right {
+  float: right;
+}
+
+h1 {
+  display: inline-block;
 }
 </style>

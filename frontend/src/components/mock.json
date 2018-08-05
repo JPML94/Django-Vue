@@ -1,0 +1,11 @@
+{
+    "logo": "https://vuejs.org/images/logo.png",
+    "job-title": "Senior Product Designer",
+    "contacts": ["Jose Pelao"],
+    "deadlines": [1529620132, 1529620132],
+    "notes": [{"text": "lalalala", "timestamp": 1529620132},
+              {"text": "note dos", "timestamp": 1529620132}],
+    "tasks": [{"text": "lalalala", "timestamp": 1529620132},
+              {"text": "note dos", "timestamp": 1529620132}],
+    "stage": "In Progress"
+}

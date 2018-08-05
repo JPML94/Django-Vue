@@ -1,9 +1,14 @@
 <template>
   <div class="backlog-view">
-    <new-item></new-item>
-
+    <h4 class="title">Backlog</h4>
     <div class="card" v-for="item in items" :key="item.id">
         <div class="card-block">
+          <span
+            :click="deleteItem"
+            class="pull-right clickable close-icon"
+            data-effect="fadeOut">
+            <i class="fa fa-times"></i>
+          </span>
           <h5 class="card-title"><span class="text-muted">#{{item.id}}</span>
           {{item.title}} <span :class="badgeClass(item)">{{badgeText(item)}}</span></h5>
         </div>
@@ -13,7 +18,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import NewItemForm from './NewItemForm';
 
 const badgeDetail = {
   todo: {
@@ -31,9 +35,6 @@ const badgeDetail = {
 };
 export default {
   name: 'Backlog',
-  components: {
-    'new-item': NewItemForm,
-  },
   computed: mapState({
     items: s => [...s.items.todo, ...s.items.inProgress, ...s.items.done],
   }),
@@ -54,6 +55,10 @@ export default {
       const lane = this.itemLane(item);
       return badgeDetail[lane].class;
     },
+    deleteItem() {
+    // eslint-disable-next-line
+      console.log('delete')
+    },
   },
 };
 </script>
@@ -67,5 +72,9 @@ export default {
 }
 .card-block {
   padding: 15px;
+}
+
+span {
+  cursor: pointer;
 }
 </style>
