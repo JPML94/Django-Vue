@@ -4,17 +4,21 @@
           action="#"
           method="post"
           @submit.prevent="submitForm">
-          <h4>Add an entry!</h4>
+          <h4>Add a job you are interested in</h4>
             <b-form-input
               type="text"
-              v-model="itemTitle"
-              placeholder="Title of Item" />
+              v-model="jobTitle"
+              placeholder="Job Title" />
+            <b-form-input
+              type="text"
+              v-model="jobCompany"
+              placeholder="Company" />
             <b-form-textarea
               :rows="3"
               :max-rows="6"
               type="text"
-              v-model="itemDescription"
-              placeholder="Description of Item" />
+              v-model="jobDescription"
+              placeholder="Job Description" />
             <b-button type="submit" variant="primary">Submit</b-button>
         </b-form>
     </div>
@@ -25,19 +29,19 @@ export default {
   name: 'NewItemForm',
   data() {
     return {
-      itemTitle: '',
-      itemDescription: '',
+      jobTitle: '',
+      jobDescription: '',
     };
   },
   methods: {
     submitForm() {
-      if (this.itemTitle) {
+      if (this.jobTitle) {
         this.$store.commit('addItem', {
-          title: this.itemTitle,
-          description: this.itemDescription,
+          title: this.jobTitle,
+          description: this.jobDescription,
         });
-        this.itemTitle = '';
-        this.itemDescription = '';
+        this.jobTitle = '';
+        this.jobDescription = '';
       }
     },
   },
@@ -45,4 +49,20 @@ export default {
 </script>
 
 <style>
+
+h4 {
+  padding: 0.5em;
+}
+
+textarea {
+  margin-top: 1em;
+}
+
+input {
+  margin-top: 1em;
+}
+
+button {
+  margin-top: 1em;
+}
 </style>
