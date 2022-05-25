@@ -10,7 +10,7 @@ future==0.16.0
 idna==2.7
 pyasn1==0.4.3
 pycparser==2.18
-PyJWT==1.6.4
+PyJWT==2.4.0
 python-jose==3.0.0
 pytz==2018.4
 rsa==3.4.2
